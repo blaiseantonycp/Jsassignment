@@ -1,6 +1,6 @@
 <html>
 <head><title>
-
+signup
 </title></head>
 <body>
   <style>
@@ -28,12 +28,101 @@
       background-color: #ddd;
       color: black;
     }
+    .login {
+      background: #eceeee;
+      border: 1px solid #42464b;
+      border-radius: 6px;
+      height: 350px;
+      margin: 175px auto;
+      width: 400px;
+    }
+    input[type="password"], input[type="text"] {
+      border: 1px solid #a1a3a3;
+      border-radius: 4px;
+      box-shadow: 0 1px #fff;
+      box-sizing: border-box;
+      color: #696969;
+      height: 39px;
+      margin: 31px 0 0 29px;
+      padding-left: 30px;
+      transition: box-shadow 0.3s;
+      width:330px ;
+    }
+    input[type="button"] {
+      width:330px;
+      height:35px;
+      font-family:Arial, "Helvetica", sans-serif;
+      font-size:16px;
+      font-weight:bold;
+      color:#fff;
+      text-align:center;
+      text-shadow:1px 1px 0px #37a69b;
+      padding-top:6px;
+      margin: 29px 0 0 29px;
+      position:relative;
+      cursor:pointer;
+      border: none;
+      background-color: #37a69b;
+      background-image: linear-gradient(top,#3db0a6,#3111);
+      border-radius: 5px;
+      box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+    }
+    span{
+      font-size: 12px;
+      color: red;
+      float: right;
+      margin-right: 30px;
+    }
   </style>
   <div class="topnav">
     <a href="contact.html" style="float:right;">Contact Us</a>
     <a href="index.html" style="float: right;">Log in</a>
     <a href="signup.html" style="float:right;background-color: #ddd;color: black;">Sign Up</a>
   </div>
+  <form>
+    <div class="login">
+    <input type="text" placeholder="Name" id="name"><br><span id="nam"></span>
+    <input type="text" placeholder="Email" id="email"><br><span id="eml"></span>
+    <input type="password" placeholder="Password" id="password"><br><span id="pass"></span>
+    <input type="button" id="signup" value="Signup"><br><br>
+    </div>
+  </form>
+  <script>
+    document.getElementById("signup").addEventListener("click",init);
+    function init(){
+      var n = document.getElementById("nam");
+      n.innerHTML="";
+      var e =document.getElementById("eml");
+      e.innerHTML="";
+      var p = document.getElementById("pass");
+      p.innerHTML="";
+      var nm=document.getElementById("name").value;
+      if(nm=="")
+        n.innerHTML="Username required";
+      else{
+        var no=nm.length;
+        if(no<1 || no>20)
+          n.innerHTML="Name should have min 1 char and max 20 char";
+      }
+      var em=document.getElementById("email").value;
+      if(em=="")
+        e.innerHTML="Email required";
+      else if(!validateEmail(em))
+          e.innerHTML="Invalid email id";
+      var pwd=document.getElementById("password").value;
+      if(pwd=="")
+        p.innerHTML="Password required";
+      else{
+        var nos=pwd.length;
+        if(nos<6 || nos>15)
+          p.innerHTML="Password should have min 6 char and max 15 char";
+      }
+    }
+    function validateEmail(email) {
+      var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+  </script>
 
 </body>
 </html>
