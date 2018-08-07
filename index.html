@@ -103,6 +103,8 @@ Login
       var pwd=document.getElementById("password").value;
       if(pwd=="")
         p.innerHTML="Password required";
+      if(n.innerHTML=="" && p.innerHTML=="")
+         alert("Login Success");
     }
     function validateEmail(email) {
       var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
